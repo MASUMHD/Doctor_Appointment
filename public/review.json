@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Awlad Hossain",
+    "role": "Product Designer",
+    "quote": "Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknow printer tool a galley of type and scrambled it to make type specimen book has survived not only five centurines.",
+    "image": "https://media.istockphoto.com/id/1413766112/photo/successful-mature-businessman-looking-at-camera-with-confidence.jpg?s=612x612&w=0&k=20&c=NJSugBzNuZqb7DJ8ZgLfYKb3qPr2EJMvKZ21Sj5Sfq4="
+  },
+  {
+    "name": "Farhana Hossain",
+    "role": "Brand Designer",
+    "quote": "Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknow printer tool a galley of type and scrambled it to make type specimen book has survived not only five centurines.",
+    "image": "https://media.istockphoto.com/id/1413766112/photo/successful-mature-businessman-looking-at-camera-with-confidence.jpg?s=612x612&w=0&k=20&c=NJSugBzNuZqb7DJ8ZgLfYKb3qPr2EJMvKZ21Sj5Sfq4="
+  },
+  {
+    "name": "Rahim Uddin",
+    "role": "UI/UX Designer",
+    "quote": "Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknow printer tool a galley of type and scrambled it to make type specimen book has survived not only five centurines.",
+    "image": "https://media.istockphoto.com/id/1413766112/photo/successful-mature-businessman-looking-at-camera-with-confidence.jpg?s=612x612&w=0&k=20&c=NJSugBzNuZqb7DJ8ZgLfYKb3qPr2EJMvKZ21Sj5Sfq4="
+  },
+  {
+    "name": "Sara Ahmed",
+    "role": "Web Developer",
+    "quote": "Using Lorem Ipsum in design helps developers focus on aesthetics and structure without getting caught up in the details of the content.",
+    "image": "https://media.istockphoto.com/id/1413766112/photo/successful-mature-businessman-looking-at-camera-with-confidence.jpg?s=612x612&w=0&k=20&c=NJSugBzNuZqb7DJ8ZgLfYKb3qPr2EJMvKZ21Sj5Sfq4="
+  },
+  {
+    "name": "Mohammed Ali",
+    "role": "Graphic Designer",
+    "quote": "The use of dummy text in design is critical, ensuring that the visual flow remains unaffected by content changes during the design process.",
+    "image": "https://media.istockphoto.com/id/1413766112/photo/successful-mature-businessman-looking-at-camera-with-confidence.jpg?s=612x612&w=0&k=20&c=NJSugBzNuZqb7DJ8ZgLfYKb3qPr2EJMvKZ21Sj5Sfq4="
+  }
+]
