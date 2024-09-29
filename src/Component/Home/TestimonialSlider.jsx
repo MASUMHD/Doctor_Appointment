@@ -53,14 +53,16 @@ const PrevArrow = ({ onClick }) => {
 };
 
 const TestimonialSlider = () => {
-  const [testimonials, setTestimonials] = useState([]);
+  // const [testimonials, setTestimonials] = useState([]);
 
-  useEffect(() => {
-    fetch("../../../public/review.json")
-      .then((response) => response.json())
-      .then((data) => setTestimonials(data))
-      .catch((error) => console.error("Error fetching testimonials:", error));
-  }, []);
+  // useEffect(() => {
+  //   fetch("../../../public/review.json")
+  //     .then((response) => response.json())
+  //     .then((data) => setTestimonials(data))
+  //     .catch((error) => console.error("Error fetching testimonials:", error));
+  // }, []);
+
+  
 
   const settings = {
     dots: true,
@@ -115,3 +117,8 @@ const TestimonialSlider = () => {
 };
 
 export default TestimonialSlider;
+
+TestimonialSlider.propTypes = {
+};
+
+
