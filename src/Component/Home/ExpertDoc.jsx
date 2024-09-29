@@ -1,17 +1,18 @@
-import { useEffect, useState } from "react";
 import ProfileCard from "./ProfileCard";
+import UseDoctors from "../Hooks/UseDoctors";
 
 
 const ExpertDoc = () => {
 
-  const [Doctors, setDoctors] = useState([]);
+  const { doctors, isPending } = UseDoctors();
 
-  useEffect(() => {
-    fetch("../../../public/doctors.json")
-      .then((res) => res.json())
-      .then((data) => setDoctors(data))
-      .catch((error) => console.log('Doctors Errors',error));
-  }, []);
+  if (isPending) {
+    return ( 
+      <div className="w-full h-screen flex justify-center items-center">
+        <span className="loading loading-bars loading-lg text-3xl"></span>
+      </div>
+    )
+  }
 
 
   return (
@@ -28,7 +29,7 @@ const ExpertDoc = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 p-4 mt-10
       ">
-        {Doctors.map((profile, index) => (
+        {doctors.map((profile, index) => (
           <ProfileCard key={index} profile={profile} />
         ))}
       </div>

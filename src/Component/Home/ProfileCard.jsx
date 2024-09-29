@@ -1,6 +1,7 @@
 import { AiOutlineDollarCircle } from "react-icons/ai";
 import { CiCalendar } from "react-icons/ci";
 import { IoLocationOutline } from "react-icons/io5";
+import PropTypes from 'prop-types';
 
 const ProfileCard = ({ profile }) => {
   return (
@@ -46,3 +47,7 @@ const ProfileCard = ({ profile }) => {
 };
 
 export default ProfileCard;
+
+ProfileCard.propTypes = {
+  profile: PropTypes.object.isRequired,
+};

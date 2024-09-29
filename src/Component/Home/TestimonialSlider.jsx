@@ -1,7 +1,9 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useEffect, useState } from "react";
+import UseReview from "../Hooks/UseReview";
+import PropTypes from 'prop-types';
+
 
 
 const NextArrow = ({ onClick }) => {
@@ -53,16 +55,17 @@ const PrevArrow = ({ onClick }) => {
 };
 
 const TestimonialSlider = () => {
-  // const [testimonials, setTestimonials] = useState([]);
 
-  // useEffect(() => {
-  //   fetch("../../../public/review.json")
-  //     .then((response) => response.json())
-  //     .then((data) => setTestimonials(data))
-  //     .catch((error) => console.error("Error fetching testimonials:", error));
-  // }, []);
+  const { reviews, isPending } = UseReview();
+  console.log("testimonials:::::", reviews);
 
-  
+  if (isPending) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <span className="loading loading-bars loading-lg text-3xl"></span>
+      </div>
+    );
+  }
 
   const settings = {
     dots: true,
@@ -85,7 +88,7 @@ const TestimonialSlider = () => {
   return (
     <div className="relative">
       <Slider {...settings}>
-        {testimonials.map((testimonial, index) => (
+        {reviews.map((testimonial, index) => (
           <div key={index} className="p-4 ">
             <div className="bg-white rounded-lg shadow-lg p-6  max-w-screen-lg h-64 items-center border">
               <div className="flex justify-between items-center">
@@ -119,6 +122,11 @@ const TestimonialSlider = () => {
 export default TestimonialSlider;
 
 TestimonialSlider.propTypes = {
+  reviews: PropTypes.shape({
+    name: PropTypes.string,
+    image: PropTypes.string,
+    role: PropTypes.string,
+    quote: PropTypes.string,
+  }).isRequired,
 };
-
 
