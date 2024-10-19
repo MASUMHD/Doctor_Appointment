@@ -55,7 +55,7 @@ const NavBar = () => {
   );
 
   return (
-    <div>
+    <div className="">
       <div className="navbar bg-[#07332F] pl-3 lg:pl-28 pr-3 lg:pr-28">
         <div className="navbar-start w-full flex justify-between items-center">
           <Link className="btn btn-ghost text-xl">

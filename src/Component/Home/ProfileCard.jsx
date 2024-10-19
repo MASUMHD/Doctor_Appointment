@@ -1,7 +1,8 @@
 import { AiOutlineDollarCircle } from "react-icons/ai";
 import { CiCalendar } from "react-icons/ci";
 import { IoLocationOutline } from "react-icons/io5";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const ProfileCard = ({ profile }) => {
   return (
@@ -37,9 +38,15 @@ const ProfileCard = ({ profile }) => {
             </i>
             {profile.price}
           </div>
-          <button className="w-full py-2 hover:bg-[#F7A582] text-[#F7A582] btn-outline border-2 hover:border-[#F7A582] rounded-md ">
-            View Profile
-          </button>
+
+
+
+          {/* View Profile */}
+          <Link to={`/doctor-profile/${profile.doc_id}`}>
+            <button className="w-full py-2 hover:bg-[#F7A582] text-[#F7A582] btn-outline border-2 hover:border-[#F7A582] rounded-md ">
+              View Profile
+            </button>
+          </Link>
         </div>
       </div>
     </div>

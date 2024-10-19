@@ -25,3 +25,4 @@ const HomeAll = () => {
 };
 
 export default HomeAll;
+
