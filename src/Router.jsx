@@ -4,6 +4,8 @@ import Error from "./Component/SharePage/Error";
 import HomeAll from "./Component/Home/HomeAll";
 import AllAbout from "./Component/About/AllAbout";
 import DoctorProfile from "./Component/Pages/DoctorProfile/DoctorProfile";
+import SingIn from "./Component/Pages/SingIn & Singup/SingIn";
+import SingUp from "./Component/Pages/SingIn & Singup/SingUp";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +25,14 @@ export const router = createBrowserRouter([
         path: "/about",
         element: <AllAbout />,
       },
+      {
+        path: "/login",
+        element: <SingIn/>
+      },
+      {
+        path: "/singUp",
+        element: <SingUp/>
+      }
     ],
   },
 ]);
