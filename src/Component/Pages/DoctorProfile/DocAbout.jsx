@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
+import { FaRegPenToSquare } from "react-icons/fa6";
 import { IoLocationOutline } from "react-icons/io5";
 
 const DocAbout = ({ doctor }) => {
@@ -12,7 +13,7 @@ const DocAbout = ({ doctor }) => {
   return (
     <div className="py-14 lg:px-20 mb-20 rounded-xl shadow-md p-3">
       {/* Button Navigation */}
-      <div className="flex mb-10 gap-2 md:gap-3 justify-start">
+      <div className="flex mb-10 gap-1 md:gap-2 lg:gap-3 justify-center">
         <button
           className={`btn w-1/4 ${
             activeSection === 0 ? "bg-[#F7A582] text-white" : "bg-gray-300"
@@ -41,7 +42,7 @@ const DocAbout = ({ doctor }) => {
           className={`btn w-1/4 ${
             activeSection === 3
               ? "bg-[#F7A582] text-white"
-              : "bg-gray-300 hidden lg:block"
+              : "bg-gray-300 "
           }`}
           onClick={() => handleClick(3)}
         >
@@ -130,7 +131,7 @@ const DocAbout = ({ doctor }) => {
       {/* Locations Section */}
       {activeSection === 1 && (
         <div>
-          <h2 className="text-3xl font-semibold text-gray-800 mb-6">
+          <h2 className="text-3xl font-semibold text-gray-800 mb-6 text-center md:text-start">
             Locations
           </h2>
           <p className="text-gray-600">
@@ -138,8 +139,8 @@ const DocAbout = ({ doctor }) => {
             123 Medical Clinic Road, Dhaka City, Bangladesh
             <br />
             <div className="text-sm text-gray-500 flex justify-center md:justify-start items-center my-2">
-            <IoLocationOutline className="mr-2" /> {doctor.location}
-          </div>
+              <IoLocationOutline className="mr-2" /> {doctor.location}
+            </div>
           </p>
         </div>
       )}
@@ -147,7 +148,23 @@ const DocAbout = ({ doctor }) => {
       {/* Reviews Section */}
       {activeSection === 2 && (
         <div>
-          <h2 className="text-3xl font-semibold text-gray-800 mb-6">Reviews</h2>
+          <div className="mb-7 justify-between flex">
+            <h2 className="text-3xl font-semibold text-gray-800 ">Reviews</h2>
+            <div>
+              <button
+                className="btn w-full text-sm font-medium text-gray-800 hover:text-gray-900 border-2 border-[#07332f]"
+                onClick={() => {
+                  // Add modal or form to add review
+                  alert("Review added successfully!");
+                }}
+              >
+                <span>
+                  <FaRegPenToSquare />
+                </span>
+                Add Review
+              </button>
+            </div>
+          </div>
           <ul className="list-disc list-inside space-y-2 text-gray-600">
             {/* Add dynamic reviews data here */}
             <li>Great experience! Highly recommended. (5/5)</li>
