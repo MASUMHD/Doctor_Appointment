@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import UseDoctors from "../../Hooks/UseDoctors";
 import DocBanner from "./DocBanner";
 import DocProfileCard from "./DocProfileCard";
+import DocAbout from "./DocAbout";
 
 const DoctorProfile = () => {
   const { id } = useParams();
@@ -30,6 +31,7 @@ const DoctorProfile = () => {
       <DocBanner doctor={doctor} />
       <div className="pl-3 lg:pl-32 pr-3 lg:pr-32">
         <DocProfileCard doctor={doctor} />
+        <DocAbout doctor={doctor} />
       </div>
     </div>
   );

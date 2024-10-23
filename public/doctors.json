@@ -1,39 +1,150 @@
 [
-    {
-      "name": "Karyen Anderson",
-      "title": "BTP - Senior Physiotherapist",
-      "location": "Dhanmondi, Dhaka, Bangladesh",
-      "availability": "Available On Mon, 22 December",
-      "price": "$15",
-      "image": "../../../public/image/Rectangle 15.png",
-      "doc_id": "1"
-    },
-    {
-      "name": "Karyen Anderson",
-      "title": "BTP - Senior Physiotherapist",
-      "location": "Dhanmondi, Dhaka, Bangladesh",
-      "availability": "Available On Mon, 22 December",
-      "price": "$15",
-      "image": "../../../public/image/Rectangle 15 (1).png",
-      "doc_id": "2"
-    },
-    {
-      "name": "Karyen Anderson",
-      "title": "BTP - Senior Physiotherapist",
-      "location": "Dhanmondi, Dhaka, Bangladesh",
-      "availability": "Available On Mon, 22 December",
-      "price": "$15",
-      "image": "../../../public/image/Rectangle 15 (2).png",
-      "doc_id": "3"
-    },
-    {
-      "name": "Karyen Anderson",
-      "title": "BTP - Senior Physiotherapist",
-      "location": "Dhanmondi, Dhaka, Bangladesh",
-      "availability": "Available On Mon, 22 December",
-      "price": "$15",
-      "image": "../../../public/image/Rectangle 15.png",
-      "doc_id": "4"
-    }
+  {
+    "name": "Dr. Sarah Mitchell",
+    "title": "MD - Senior Cardiologist",
+    "location": "Banani, Dhaka, Bangladesh",
+    "availability": "Available On Mon, 22 December",
+    "price": "$50",
+    "image": "../../../public/image/Rectangle 15.png",
+    "doc_id": "1",
+    "doc_abouts": "Dr. Sarah Mitchell is a highly experienced cardiologist with over 15 years of medical practice. She specializes in treating complex cardiovascular diseases and is renowned for her compassionate patient care. Dr. Mitchell has worked in various leading hospitals and has contributed to significant medical research in cardiology.",
+    "doc_education": [
+      "MBBS - Dhaka Medical College",
+      "MD - Cardiology, University of London",
+      "Fellowship - American College of Cardiology",
+      "Certification - Advanced Cardiac Life Support",
+      "Diploma - Clinical Echocardiography"
+    ],
+    "doc_awards": [
+      "Best Cardiologist Award - Bangladesh Cardiac Association (2021)",
+      "Excellence in Cardiac Care - Dhaka Medical Association (2019)",
+      "Top 100 Doctors - Bangladesh Medical Journal (2020)",
+      "Lifetime Achievement Award - Cardiac Society (2023)"
+    ],
+    "doc_service": [
+      "Cardiac Consultation",
+      "Cardiac Surgery Follow-up",
+      "Echocardiography",
+      "Heart Disease Screening",
+      "Cardiovascular Risk Management"
+    ],
+    "doc_specializations": [
+      "Cardiac Surgery",
+      "Heart Failure Management",
+      "Interventional Cardiology",
+      "Cardiac Imaging",
+      "Heart Disease Prevention"
+    ]
+  },
+  {
+    "name": "Dr. Rafiq Ahmed",
+    "title": "MD - Orthopedic Surgeon",
+    "location": "Gulshan, Dhaka, Bangladesh",
+    "availability": "Available On Tue, 23 December",
+    "price": "$40",
+    "image": "../../../public/image/Rectangle 15 (1).png",
+    "doc_id": "2",
+    "doc_abouts": "Dr. Rafiq Ahmed is a leading orthopedic surgeon specializing in bone and joint disorders. With over 20 years of experience, he has successfully treated thousands of patients suffering from musculoskeletal issues. He is known for his minimally invasive surgical techniques and dedication to improving patient mobility.",
+    "doc_education": [
+      "MBBS - Sir Salimullah Medical College",
+      "MD - Orthopedics, University of Melbourne",
+      "Fellowship - Royal College of Surgeons",
+      "Certification - Arthroscopy and Joint Replacement",
+      "Diploma - Sports Medicine"
+    ],
+    "doc_awards": [
+      "Best Orthopedic Surgeon - Bangladesh Medical Council (2021)",
+      "Excellence in Joint Replacement Surgery (2018)",
+      "Top Orthopedic Specialist - Dhaka Medical Awards (2020)",
+      "Outstanding Contribution to Sports Medicine (2022)"
+    ],
+    "doc_service": [
+      "Joint Replacement Surgery",
+      "Fracture Treatment",
+      "Arthroscopy",
+      "Spine Surgery",
+      "Sports Injury Treatment"
+    ],
+    "doc_specializations": [
+      "Knee Replacement",
+      "Shoulder Surgery",
+      "Spinal Surgery",
+      "Bone Fractures",
+      "Sports Injuries"
+    ]
+  },
+  {
+    "name": "Dr. Farhana Yasmin",
+    "title": "MBBS - Pediatrician",
+    "location": "Mirpur, Dhaka, Bangladesh",
+    "availability": "Available On Wed, 24 December",
+    "price": "$30",
+    "image": "../../../public/image/Rectangle 15 (2).png",
+    "doc_id": "3",
+    "doc_abouts": "Dr. Farhana Yasmin is a compassionate pediatrician with extensive experience in child healthcare. She is highly skilled in treating children with various medical conditions and focuses on providing personalized care for each child. Dr. Yasmin also emphasizes preventive care to ensure the overall well-being of her young patients.",
+    "doc_education": [
+      "MBBS - Dhaka Shishu Hospital",
+      "Diploma in Child Health - University of Sydney",
+      "Fellowship in Pediatric Care - Harvard Medical School",
+      "Certification - Pediatric Emergency Medicine",
+      "Training - Neonatal Care"
+    ],
+    "doc_awards": [
+      "Best Pediatrician Award - Bangladesh Pediatric Society (2020)",
+      "Excellence in Child Care - Dhaka Shishu Hospital (2019)",
+      "Top Pediatric Specialist - Dhaka Medical Awards (2021)",
+      "Outstanding Contribution to Child Health (2022)"
+    ],
+    "doc_service": [
+      "Child Healthcare Consultation",
+      "Vaccination and Immunization",
+      "Pediatric Emergency Services",
+      "Newborn Care",
+      "Growth and Development Monitoring"
+    ],
+    "doc_specializations": [
+      "Child Nutrition",
+      "Neonatal Care",
+      "Pediatric Respiratory Disorders",
+      "Pediatric Allergies",
+      "Growth Disorders"
+    ]
+  },
+  {
+    "name": "Dr. Ahmed Siddiqui",
+    "title": "DDS - Dental Surgeon",
+    "location": "Uttara, Dhaka, Bangladesh",
+    "availability": "Available On Thu, 25 December",
+    "price": "$20",
+    "image": "../../../public/image/Rectangle 15.png",
+    "doc_id": "4",
+    "doc_abouts": "Dr. Ahmed Siddiqui is an expert dental surgeon with over 10 years of experience in cosmetic and restorative dentistry. He is committed to providing patients with excellent dental care, utilizing the latest techniques in dental surgery. His practice is patient-centered, focusing on delivering comfortable and effective treatments.",
+    "doc_education": [
+      "BDS - Dhaka Dental College",
+      "DDS - University of Toronto",
+      "Certification - Cosmetic Dentistry",
+      "Certification - Dental Implants",
+      "Fellowship - American Academy of Implant Dentistry"
+    ],
+    "doc_awards": [
+      "Best Dental Surgeon - Bangladesh Dental Association (2021)",
+      "Excellence in Cosmetic Dentistry (2019)",
+      "Top Dental Specialist - Dhaka Medical Awards (2020)",
+      "Outstanding Contribution to Dental Care (2022)"
+    ],
+    "doc_service": [
+      "Cosmetic Dentistry",
+      "Dental Implants",
+      "Root Canal Treatment",
+      "Orthodontics",
+      "Teeth Whitening"
+    ],
+    "doc_specializations": [
+      "Cosmetic Dentistry",
+      "Implant Dentistry",
+      "Orthodontics",
+      "Oral Surgery",
+      "Restorative Dentistry"
+    ]
+  }
 ]
-  

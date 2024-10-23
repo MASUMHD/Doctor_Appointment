@@ -40,7 +40,7 @@ const DocProfileCard = ({ doctor }) => {
         
           <div className="text-sm text-gray-500 flex justify-center md:justify-start items-center my-2">
             <IoLocationOutline className="mr-2" /> {doctor.location}
-            <Link to="/" className="ml-2 text-orange-500 hover:underline">
+            <Link to="" className="ml-2 text-orange-500 hover:underline">
               Get Directions
             </Link>
           </div>
