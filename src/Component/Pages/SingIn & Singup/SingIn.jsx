@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import BackgroundImg from "../../../../public/image/Frame.png";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import SocialLogin from "./SocialLogin";
 
 const SignIn = () => {
   const { register, handleSubmit } = useForm();
@@ -30,9 +31,9 @@ const SignIn = () => {
       </div>
 
       {/* Right Side with Form */}
-      <div className="w-full lg:w-1/2 flex justify-center items-center p-6 lg:p-0 ">
-        <div className="w-full max-w-md p-14 bg-white rounded-xl shadow-xl border">
-          <h2 className="text-2xl lg:text-3xl font-semibold text-center mb-10">
+      <div className="w-full lg:w-1/2 flex justify-center items-center p-3 lg:p-0 ">
+        <div className="w-full max-w-md p-12 bg-white rounded-xl shadow-xl border">
+          <h2 className="text-2xl lg:text-3xl font-bold text-center mb-10">
             Sign in to Doc House
           </h2>
 
@@ -77,6 +78,16 @@ const SignIn = () => {
               className="w-full bg-[#F7A582] text-white py-2 rounded-md hover:bg-[#e6906b] transition duration-300"
             />
           </form>
+
+          {/* Social Login */}
+          <div className=" items-center justify-center">
+            <p className="text-xl text-gray-600 font-semibold mt-2 mb-2 text-center">
+              Social Login
+            </p>
+            <div>
+              <SocialLogin />
+            </div>
+          </div>
 
           <div className="mt-4 text-center">
             <p className="text-sm text-gray-600">
