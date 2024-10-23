@@ -57,7 +57,7 @@ const PrevArrow = ({ onClick }) => {
 const TestimonialSlider = () => {
 
   const { reviews, isPending } = UseReview();
-  console.log("testimonials:::::", reviews);
+  // console.log("testimonials:::::", reviews);
 
   if (isPending) {
     return (

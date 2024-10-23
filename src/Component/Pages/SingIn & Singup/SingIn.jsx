@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
 import BackgroundImg from "../../../../public/image/Frame.png";
+import { useForm } from "react-hook-form";
 
 const SignIn = () => {
-    const error = '';
-    
+  const { register,  handleSubmit } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
     <div className="min-h-screen flex flex-col lg:flex-row ">
       {/* Left Side with Image and Background */}
@@ -24,7 +28,7 @@ const SignIn = () => {
             Sign in to Doc House
           </h2>
 
-          <form >
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-4">
               <label htmlFor="email" className="block text-gray-700  mb-2">
                 Username or Email Address
@@ -35,6 +39,7 @@ const SignIn = () => {
                 className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#F7A582]"
                 placeholder="Enter your username or email"
                 aria-label="Email"
+                {...register("email")}
               />
             </div>
             <div className="mb-4">
@@ -54,23 +59,16 @@ const SignIn = () => {
                 className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#F7A582]"
                 placeholder="Enter your password"
                 aria-label="Password"
+                {...register("password")}
               />
             </div>
 
-            <button
+            <input
               type="submit"
+              value="Create Account"
               className="w-full bg-[#F7A582] text-white py-2 rounded-md hover:bg-[#e6906b] transition duration-300"
-            >
-              Create Account
-            </button>
+            />
 
-            <div className="mb-2 mt-2">
-              {/* Display error message if validation fails */}
-              {error && (
-                <p className="text-red-500 text-center mb-4">hi{error}</p>
-              )}
-            </div>
-            
           </form>
 
           <div className="mt-4 text-center">
