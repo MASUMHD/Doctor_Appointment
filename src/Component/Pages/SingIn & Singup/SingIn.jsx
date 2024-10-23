@@ -1,11 +1,19 @@
 import { Link } from "react-router-dom";
 import BackgroundImg from "../../../../public/image/Frame.png";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const SignIn = () => {
-  const { register,  handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log(data);
+
+    // switch alert ................................................................
+    Swal.fire({
+      title: "Login Successful!",
+      text: "You clicked the button!",
+      icon: "success",
+    });
   };
 
   return (
@@ -68,7 +76,6 @@ const SignIn = () => {
               value="Create Account"
               className="w-full bg-[#F7A582] text-white py-2 rounded-md hover:bg-[#e6906b] transition duration-300"
             />
-
           </form>
 
           <div className="mt-4 text-center">

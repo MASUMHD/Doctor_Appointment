@@ -1,15 +1,38 @@
 import { Link } from "react-router-dom";
 import BackgroundImg from "../../../../public/image/Frame.png";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const SingUp = () => {
-
-  const {
-    register,
-    handleSubmit,
-  } = useForm();
+  const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log(data);
+
+    
+    // switch alert................................................................
+
+    let timerInterval;
+    Swal.fire({
+      title: "Please wait! ",
+      html: "I will close in <b></b> milliseconds.",
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading();
+        const timer = Swal.getPopup().querySelector("b");
+        timerInterval = setInterval(() => {
+          timer.textContent = `${Swal.getTimerLeft()}`;
+        }, 100);
+      },
+      willClose: () => {
+        clearInterval(timerInterval);
+      },
+    }).then((result) => {
+      /* Read more about handling dismissals below */
+      if (result.dismiss === Swal.DismissReason.timer) {
+        console.log("I was closed by the timer");
+      }
+    });
   };
 
   return (
@@ -102,8 +125,6 @@ const SingUp = () => {
               value="Create Account"
               className="w-full bg-[#F7A582] text-white py-2 rounded-md hover:bg-[#e6906b] transition duration-300"
             />
-
-            
           </form>
 
           <div className="mt-4 text-center">

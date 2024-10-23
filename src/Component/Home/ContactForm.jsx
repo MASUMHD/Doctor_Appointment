@@ -1,7 +1,16 @@
 import { IoLocationOutline } from "react-icons/io5";
 import { VscCallOutgoing } from "react-icons/vsc";
+import Swal from "sweetalert2";
 
 const ContactForm = () => {
+  const handleSubmit = () => {
+    Swal.fire({
+      title: "Thank you for your message!",
+      text: "We will contact you soon!",
+      icon: "success",
+    });
+  };
+
   return (
     <div className="mb-16 md:mb-32">
       <section className="bg-[#07332F] text-white py-20 px-4 rounded-xl">
@@ -31,7 +40,10 @@ const ContactForm = () => {
 
           {/* Form Section */}
           <div className=" pr-0 lg:pr-16 ">
-            <form className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <form
+              onSubmit={handleSubmit}
+              className="grid grid-cols-1 gap-4 md:grid-cols-2"
+            >
               <input
                 type="text"
                 placeholder="Name"
@@ -61,9 +73,8 @@ const ContactForm = () => {
                 className="p-3 rounded-md bg-[#204D44] text-white placeholder-gray-300"
               />
               <div className="col-span-1 md:col-span-2">
-                <button className="w-full p-3 bg-[#F7A582] text-white rounded-md font-semibold hover:bg-orange-300">
-                  Book Now
-                </button>
+                
+                <input type="submit" value={"Submit"} className="w-full p-3 bg-[#F7A582] text-white rounded-md font-semibold hover:bg-orange-300" />
               </div>
             </form>
           </div>
