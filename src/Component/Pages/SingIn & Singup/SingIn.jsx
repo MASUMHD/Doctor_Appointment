@@ -1,20 +1,52 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import BackgroundImg from "../../../../public/image/Frame.png";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import SocialLogin from "./SocialLogin";
+import UseAuth from "../../Hooks/UseAuth";
+import { useState } from "react";
 
 const SignIn = () => {
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
+  const [Error, setError] = useState("");
+  const { loginUser } = UseAuth();
 
-    // switch alert ................................................................
-    Swal.fire({
-      title: "Login Successful!",
-      text: "You clicked the button!",
-      icon: "success",
-    });
+
+  const { register, handleSubmit } = useForm();
+
+  // navigation system
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state || "/";
+
+  const onSubmit = (data) => {
+    // console.log(data);
+
+    const { email, password } = data;
+    loginUser(email, password)
+      .then((result) => {
+        if(result.user){
+            navigate(from)
+        }
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "Login Successful",
+          showConfirmButton: false,
+          timer: 1500
+      });
+        // console.log(result.user);
+      })
+      .catch((error) => {
+        // console.log(error)
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Password or Email is not correct. Please register first!",
+          footer: '<a href="#">Why do I have this issue?</a>'
+      });
+        setError(error.message);
+      });
+
   };
 
   return (
@@ -77,6 +109,8 @@ const SignIn = () => {
               value="Create Account"
               className="w-full bg-[#F7A582] text-white py-2 rounded-md hover:bg-[#e6906b] transition duration-300"
             />
+
+            {Error && <p className="text-red-600 text-center mt-2 mb-2">{Error}</p>}
           </form>
 
           {/* Social Login */}
