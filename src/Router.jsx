@@ -7,6 +7,7 @@ import DoctorProfile from "./Component/Pages/DoctorProfile/DoctorProfile";
 import SingIn from "./Component/Pages/SingIn & Singup/SingIn";
 import SingUp from "./Component/Pages/SingIn & Singup/SingUp";
 import PrivateRoute from "./Component/Hooks/PrivateRoute";
+import AllDashboard from "./Component/Pages/Dashboard/AllDashboard";
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
       {
         path: "/singUp",
         element: <SingUp />,
+      },
+      {
+        path: "/dashboard",
+        element: <AllDashboard/>
       },
     ],
   },

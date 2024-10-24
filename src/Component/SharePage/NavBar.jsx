@@ -56,7 +56,20 @@ const NavBar = () => {
           </li>
         </NavLink>
       )}
-      
+      {
+        user && <NavLink
+          to="/dashboard"
+          className={({ isActive }) =>
+            isActive
+              ? "text-[#F7A582] font-bold border border-[#F7A582] rounded-lg"
+              : "lg:text-white text-black "
+          }
+        >
+          <li>
+            <p>Dashboard</p>
+          </li>
+        </NavLink>
+      }
     </>
   );
 
