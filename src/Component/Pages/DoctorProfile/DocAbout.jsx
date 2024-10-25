@@ -11,7 +11,7 @@ const DocAbout = ({ doctor }) => {
   };
 
   return (
-    <div className="py-14 lg:px-20 mb-20 rounded-xl shadow-md p-3">
+    <div className="py- lg:px-20 mb-20 rounded-xl shadow-md p-3">
       {/* Button Navigation */}
       <div className="flex mb-10 gap-1 md:gap-2 lg:gap-3 justify-center">
         <button
@@ -52,7 +52,7 @@ const DocAbout = ({ doctor }) => {
 
       {/* Conditionally Render Sections Based on Active Button */}
       {activeSection === 0 && (
-        <div>
+        <div className="mb-10">
           {/* About Section */}
           <div className="mb-10">
             <h2 className="text-3xl font-semibold text-gray-800 mb-6">
@@ -130,7 +130,7 @@ const DocAbout = ({ doctor }) => {
 
       {/* Locations Section */}
       {activeSection === 1 && (
-        <div>
+        <div className="mb-10">
           <h2 className="text-3xl font-semibold text-gray-800 mb-6 text-center md:text-start">
             Locations
           </h2>
@@ -147,7 +147,7 @@ const DocAbout = ({ doctor }) => {
 
       {/* Reviews Section */}
       {activeSection === 2 && (
-        <div>
+        <div className="mb-10">
           <div className="mb-7 justify-between flex">
             <h2 className="text-3xl font-semibold text-gray-800 ">Reviews</h2>
             <div>
@@ -176,7 +176,7 @@ const DocAbout = ({ doctor }) => {
 
       {/* Business Hours Section */}
       {activeSection === 3 && (
-        <div>
+        <div className="mb-10">
           <h2 className="text-3xl font-semibold text-gray-800 mb-6">
             Business Hours
           </h2>
