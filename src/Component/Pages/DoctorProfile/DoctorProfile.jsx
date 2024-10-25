@@ -3,6 +3,7 @@ import UseDoctors from "../../Hooks/UseDoctors";
 import DocBanner from "./DocBanner";
 import DocProfileCard from "./DocProfileCard";
 import DocAbout from "./DocAbout";
+import { Helmet } from "react-helmet";
 
 const DoctorProfile = () => {
   const { id } = useParams();
@@ -28,6 +29,9 @@ const DoctorProfile = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Doc | Profile - {doctor.name}</title>
+      </Helmet>
       <DocBanner doctor={doctor} />
       <div className="pl-3 lg:pl-32 pr-3 lg:pr-32">
         <DocProfileCard doctor={doctor} />

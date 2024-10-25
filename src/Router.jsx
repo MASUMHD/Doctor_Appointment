@@ -2,12 +2,14 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "./Component/Main";
 import Error from "./Component/SharePage/Error";
 import HomeAll from "./Component/Home/HomeAll";
-import AllAbout from "./Component/About/AllAbout";
+import AllAbout from "./Component/Pages/About/AllAbout";
 import DoctorProfile from "./Component/Pages/DoctorProfile/DoctorProfile";
 import SingIn from "./Component/Pages/SingIn & Singup/SingIn";
 import SingUp from "./Component/Pages/SingIn & Singup/SingUp";
 import PrivateRoute from "./Component/Hooks/PrivateRoute";
 import AllDashboard from "./Component/Pages/Dashboard/AllDashboard";
+import AllServices from "./Component/Pages/Services/AllServices";
+import AllAppointment from "./Component/Pages/Appointment/AllAppointment";
 
 export const router = createBrowserRouter([
   {
@@ -40,8 +42,20 @@ export const router = createBrowserRouter([
         element: <SingUp />,
       },
       {
+        path: "/services",
+        element: <AllServices />,
+      },
+      {
+        path: "/appointment",
+        element: <AllAppointment />,
+      },
+      {
         path: "/dashboard",
-        element: <AllDashboard/>
+        element: (
+          <PrivateRoute>
+            <AllDashboard />,
+          </PrivateRoute>
+        ),
       },
     ],
   },

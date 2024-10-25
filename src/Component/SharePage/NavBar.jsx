@@ -20,6 +20,31 @@ const NavBar = () => {
         </li>
       </NavLink>
       <NavLink
+        to="/services"
+        className={({ isActive }) =>
+          isActive
+            ? "text-[#F7A582] font-bold border border-[#F7A582] rounded-lg"
+            : "lg:text-white text-black "
+        }
+      >
+        <li>
+          <p>Services</p>
+        </li>
+      </NavLink>
+      
+      <NavLink
+        to="/appointment"
+        className={({ isActive }) =>
+          isActive
+            ? "text-[#F7A582] font-bold border border-[#F7A582] rounded-lg"
+            : "lg:text-white text-black "
+        }
+      >
+        <li>
+          <p>Appointment</p>
+        </li>
+      </NavLink>
+      <NavLink
         to="/about"
         className={({ isActive }) =>
           isActive
@@ -29,18 +54,6 @@ const NavBar = () => {
       >
         <li>
           <p>About</p>
-        </li>
-      </NavLink>
-      <NavLink
-        to="/services"
-        className={({ isActive }) =>
-          isActive
-            ? "text-[#F7A582] font-bold border border-[#F7A582] rounded-lg"
-            : "lg:text-white text-black "
-        }
-      >
-        <li>
-          <p>Appointment</p>
         </li>
       </NavLink>
       {!user && (
@@ -61,13 +74,13 @@ const NavBar = () => {
       {user && (
         <NavLink
           to="/dashboard"
-          className={({ isActive }) =>
-            isActive
-              ? "text-[#F7A582] font-bold border border-[#F7A582] rounded-lg"
-              : "lg:text-white text-black"
-          }
+          // className={({ isActive }) =>
+          //   isActive
+          //     ? "text-[#F7A582] font-bold border border-[#F7A582] rounded-lg"
+          //     : "lg:text-white text-black"
+          // }
         >
-          <li className="">
+          <li className="lg:hidden block">
             {" "}
             <p>Dashboard</p>
           </li>
