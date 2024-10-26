@@ -104,7 +104,7 @@ const NavBar = () => {
     <div className="">
       <div className="navbar bg-[#07332F] pl-3 lg:pl-28 pr-3 lg:pr-28">
         <div className="navbar-start w-full flex justify-between items-center">
-          <Link className="btn btn-ghost text-xl">
+          <Link to="/" className="btn btn-ghost text-xl">
             <img
               className="w-40 h-10"
               src="../../../public/image/Group 2.png"

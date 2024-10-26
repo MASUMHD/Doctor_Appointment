@@ -4,7 +4,7 @@ import Footer from "./SharePage/Footer";
 
 const Main = () => {
     const location = useLocation();
-    const noHeaderFooter = location.pathname.includes('/login') || location.pathname.includes('/singUp')
+    const noHeaderFooter = location.pathname.includes('/login') || location.pathname.includes('/singUp') || location.pathname.includes('/dashboard');
 
     return (
         <div>
