@@ -7,6 +7,7 @@ import UseAuth from "../../Hooks/UseAuth";
 import { useState } from "react";
 
 
+
 const SingUp = () => {
   const { createUser } = UseAuth();
   const [passwordError, setPasswordError] = useState("");

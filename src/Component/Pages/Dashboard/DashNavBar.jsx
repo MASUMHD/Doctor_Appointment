@@ -1,9 +1,15 @@
-import { FaBars, FaBell, FaSearch, FaUserCircle } from "react-icons/fa";
+import { FaBars, FaBell, FaSearch, } from "react-icons/fa";
 import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
+import { IoIosArrowDown } from "react-icons/io";
+import UseAuth from "../../Hooks/UseAuth";
 
 const DashNavBar = ({ SideBarToggle, setSideBarToggle }) => {
+
+  const { user } = UseAuth();
+
   return (
-    <div className="bg-gray-800 px-4 py-3 flex justify-between items-center transition-all duration-300">
+    <div className="bg-gray-800 px-4 py-3 flex justify-between items-center transition-all duration-300 ">
       <div className="flex items-center text-xl">
         <FaBars
           onClick={() => setSideBarToggle(!SideBarToggle)}
@@ -24,16 +30,43 @@ const DashNavBar = ({ SideBarToggle, setSideBarToggle }) => {
         <div className="text-white">
           <FaBell className="w-6 h-6" />
         </div>
-        <div className="relative">
-          <button className="text-white group">
-            <FaUserCircle className="w-6 h-6 mt-1" />
-            <div className="z-10 hidden absolute rounded-lg shadow w-32 group-focus:block top-full right-0 bg-white">
-              <ul className="py-2 text-gray-950 text-sm">
-                <li><a href="">Home</a></li>
-                <li><a href="">Log out</a></li>
-              </ul>
+        <div className="relative flex items-center justify-center">
+          <div className="navbar-end flex items-center justify-center">
+          <div className="avatar">
+            <div className="w-8 h-8 border-2 border-[#F7A582] rounded-full ">
+              <img
+                className="object-cover"
+                src={user?.photoURL}
+                alt="profile"
+              />
             </div>
-          </button>
+          </div>
+          {/* dropdown */}
+          <div className="dropdown dropdown-end">
+            <div
+              tabIndex={0}
+              role="button"
+              className="text-white text-2xl hover:text-[#F7A582] m-1"
+            >
+              <IoIosArrowDown />
+            </div>
+            <ul
+              tabIndex={0}
+              className="dropdown-content menu bg-base-100 rounded-box z-[1] w-28 p-2 shadow"
+            >
+              <Link to="/">
+                <li className="hover:bg-[#F7A582] rounded hover:font-semibold">
+                  <a>Home</a>
+                </li>
+              </Link>
+              <Link to="/services">
+                <li className="hover:bg-[#F7A582] rounded hover:font-semibold">
+                  <a>Services</a>
+                </li>
+              </Link>
+            </ul>
+          </div>
+        </div>
         </div>
       </div>
     </div>

@@ -1,8 +1,10 @@
-import { FaHome } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import PropTypes from 'prop-types';
+import { FaHome, FaUsers } from "react-icons/fa";
+import { Link, useLocation } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const SideBar = ({ SideBarToggle }) => {
+  const location = useLocation();
+
   return (
     <div
       className={`${
@@ -10,23 +12,41 @@ const SideBar = ({ SideBarToggle }) => {
       } w-64 bg-gray-800 fixed h-full px-4 py-2`}
     >
       <div className="my-2 mb-4">
-        <h1 className="text-2xl font-bold text-white">Admin Dashboard</h1>
+        <Link to="/" className="btn btn-ghost text-xl">
+          <img
+            className="w-40 h-10"
+            src="../../../../public/image/Group 2.png"
+            alt="Logo"
+          />
+        </Link>
       </div>
       <hr />
       <ul className="mt-3 text-white font-bold">
-        <Link to="/">
-          <li className="mb-2 rounded hover:bg-blue-500 py-2">
-            <p className="px-3">
-              <FaHome className="inline-block w-6 h-6 mr-2 -mt-2 " />
+        <Link to="/dashboard">
+          <li
+            className={`mb-2 py-2 px-3 rounded ${
+              location.pathname === "/dashboard"
+                ? "text-[#F7A582] font-bold border border-[#F7A582] rounded-lg"
+                : "hover:bg-blue-500"
+            }`}
+          >
+            <p className="flex items-center">
+              <FaHome className="w-6 h-6 mr-2" />
               Home
             </p>
           </li>
         </Link>
-        <Link to="/services">
-          <li className="mb-2 rounded hover:bg-blue-500 py-2">
-            <p className="px-3">
-              <FaHome className="inline-block w-6 h-6 mr-2 -mt-2 " />
-              Services
+        <Link to="/dashboard/allUsers">
+          <li
+            className={`mb-2 py-2 px-3 rounded ${
+              location.pathname === "/dashboard/allUsers"
+                ? "text-[#F7A582] font-bold border border-[#F7A582] rounded-lg"
+                : "hover:bg-blue-500"
+            }`}
+          >
+            <p className="flex items-center">
+              <FaUsers className="w-6 h-6 mr-2" />
+              Users
             </p>
           </li>
         </Link>
@@ -35,8 +55,8 @@ const SideBar = ({ SideBarToggle }) => {
   );
 };
 
-export default SideBar;
-
 SideBar.propTypes = {
-  SideBarToggle: PropTypes.bool
-}
+  SideBarToggle: PropTypes.bool,
+};
+
+export default SideBar;

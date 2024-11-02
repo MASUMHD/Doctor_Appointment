@@ -10,6 +10,8 @@ import PrivateRoute from "./Component/Hooks/PrivateRoute";
 import AllDashboard from "./Component/Pages/Dashboard/AllDashboard";
 import AllServices from "./Component/Pages/Services/AllServices";
 import AllAppointment from "./Component/Pages/Appointment/AllAppointment";
+import AllUsers from "./Component/Pages/Dashboard/DasSideRouters/AllUsers";
+import DasHome from "./Component/Pages/Dashboard/DasSideRouters/DasHome";
 
 export const router = createBrowserRouter([
   {
@@ -49,14 +51,26 @@ export const router = createBrowserRouter([
         path: "/appointment",
         element: <AllAppointment />,
       },
+      {},
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <AllDashboard />,
+      </PrivateRoute>
+    ),
+    children: [
       {
         path: "/dashboard",
-        element: (
-          <PrivateRoute>
-            <AllDashboard />,
-          </PrivateRoute>
-        ),
-      },
+        element: <DasHome />,
+      }
+      ,
+      {
+        path: "/dashboard/allUsers",
+        element: <AllUsers/>,
+      }
     ],
   },
 ]);
