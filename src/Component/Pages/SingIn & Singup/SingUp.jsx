@@ -5,19 +5,23 @@ import Swal from "sweetalert2";
 import SocialLogin from "./SocialLogin";
 import UseAuth from "../../Hooks/UseAuth";
 import { useState } from "react";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 
 
 const SingUp = () => {
-  const { createUser } = UseAuth();
+  const { createUser, updateUserProfile  } = UseAuth();
   const [passwordError, setPasswordError] = useState("");
 
-  const { register, handleSubmit } = useForm();
+  const axiosPublic = useAxiosPublic();
+
+  const { register, handleSubmit, reset } = useForm();
 
   // navigation system
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state || "/";
+
   const onSubmit = (data) => {
     // console.log(data);
 
@@ -37,42 +41,56 @@ const SingUp = () => {
       return;
     }
 
-    createUser(email, password)
-      .then((result) => {
-        if (result.user) {
-          navigate(from);
-        }
+    createUser(email, password).then((result) => {
+      if (result.user) {
+        navigate(from);
+      }
+      updateUserProfile(data.name, data.photoURL)
+        .then(() => {
+          // console.log("user profile info updated");
 
-        // sweet alert
-
-        let timerInterval;
-        Swal.fire({
-          title: "User created successfully!",
-          html: "I will close in <b></b> milliseconds.",
-          timer: 2000,
-          timerProgressBar: true,
-          didOpen: () => {
-            Swal.showLoading();
-            const timer = Swal.getPopup().querySelector("b");
-            timerInterval = setInterval(() => {
-              timer.textContent = `${Swal.getTimerLeft()}`;
-            }, 100);
-          },
-          willClose: () => {
-            clearInterval(timerInterval);
-          },
-        }).then((result) => {
-          /* Read more about handling dismissals below */
-          if (result.dismiss === Swal.DismissReason.timer) {
-            console.log("I was closed by the timer");
-          }
+          // create user in db
+          const userInfo = {
+            name: data.name,
+            email: data.email,
+            password: data.password,
+            UserName: data.username,
+          };
+          axiosPublic.post("/users", userInfo).then((res) => {
+            if (res.data.insertedId) {
+              console.log("User created successfully");
+              reset();
+              let timerInterval;
+              Swal.fire({
+                title: "Auto close alert!",
+                html: "I will close in <b></b> milliseconds.",
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: () => {
+                  Swal.showLoading();
+                  const timer = Swal.getPopup().querySelector("b");
+                  timerInterval = setInterval(() => {
+                    timer.textContent = `${Swal.getTimerLeft()}`;
+                  }, 100);
+                },
+                willClose: () => {
+                  clearInterval(timerInterval);
+                },
+              }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                  console.log("I was closed by the timer");
+                }
+              });
+            }
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+          alert(error.message);
+          setPasswordError(error.message);
         });
-      })
-      .catch((error) => {
-        console.log(error);
-        alert(error.message);
-        setPasswordError(error.message);
-      });
+    });
 
     
   };
