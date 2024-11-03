@@ -24,7 +24,8 @@ const SocialLogin = () => {
         const userInfo = {
           name: result.user?.displayName,
           email: result.user?.email,
-          profilePicture: result.user?.photoURL, // Store profile picture URL
+          profilePicture: result.user?.photoURL,
+          role: "user", 
         };
 
         // Store user in the database
