@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useReactTable, getCoreRowModel, flexRender } from '@tanstack/react-table';
 import axios from 'axios';
-import { FaUserEdit, FaTrash } from "react-icons/fa";
+import { FaUserEdit, FaTrash } from "react-icons/fa"
+import Swal from 'sweetalert2';
+import UseAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
-
+  const useAxiosPublic = UseAxiosPublic()
   // Fetch users from backend
   useEffect(() => {
     const fetchUsers = async () => {
@@ -49,16 +51,16 @@ const AllUsers = () => {
       id: 'actions',
       header: 'Actions',
       cell: ({ row }) => (
-        <div className="flex justify-center gap-2">
+        <div className="flex justify-evenly text-lg">
           <button
             onClick={() => handleRoleChange(row.original)}
-            className="text-blue-500 hover:text-blue-700"
+            className="text-blue-500 hover:text-blue-700 border border-blue-500 px-2 py-1 rounded"
           >
             <FaUserEdit />
           </button>
           <button
             onClick={() => handleDelete(row.original)}
-            className="text-red-500 hover:text-red-700"
+            className="text-red-500 hover:text-red-700 border border-red-500 px-2 py-1 rounded"
           >
             <FaTrash />
           </button>
@@ -68,14 +70,38 @@ const AllUsers = () => {
   ];
 
   const handleRoleChange = (user) => {
-    // Add role change logic here
+    alert(`Change role for ${user.name}`);
     console.log('Change role for:', user);
   };
 
+  // Delete user
   const handleDelete = (user) => {
-    // Add delete logic here
-    console.log('Delete user:', user);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const response = await useAxiosPublic.delete(`/users/${user._id}`);
+          
+          if (response.status === 200) {
+            // Update the users state to remove the deleted user
+            setUsers((prevUsers) => prevUsers.filter((u) => u._id !== user._id));
+            Swal.fire("Deleted!", `${user.name} has been deleted.`, "success");
+          }
+        } catch (error) {
+          console.error("Error deleting user:", error);
+          Swal.fire("Error!", "Failed to delete the user. Please try again.", "error");
+        }
+      }
+    });
   };
+  
 
   const table = useReactTable({
     data: users,
@@ -84,8 +110,8 @@ const AllUsers = () => {
   });
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-4xl p-4 bg-white shadow-md rounded-lg">
+    <div className="flex justify-center items-center ">
+      <div className="w-full max-w-6xl p-4 bg-white shadow-md rounded-lg">
         <h1 className="text-2xl font-bold text-gray-700 text-center mb-4">All Users</h1>
         <table className="min-w-full border border-gray-300">
           <thead>
