@@ -32,7 +32,7 @@ const SideBar = ({ SideBarToggle }) => {
           >
             <p className="flex items-center">
               <FaHome className="w-6 h-6 mr-2" />
-              Home
+              Dashboard Home
             </p>
           </li>
         </Link>
@@ -46,7 +46,21 @@ const SideBar = ({ SideBarToggle }) => {
           >
             <p className="flex items-center">
               <FaUsers className="w-6 h-6 mr-2" />
-              Users
+              All Users
+            </p>
+          </li>
+        </Link>
+        <Link to="/dashboard/services">
+          <li
+            className={`mb-2 py-2 px-3 rounded ${
+              location.pathname === "/dashboard/services"
+                ? "text-[#F7A582] font-bold border border-[#F7A582] rounded-lg"
+                : "hover:bg-blue-500"
+            }`}
+          >
+            <p className="flex items-center">
+              <FaUsers className="w-6 h-6 mr-2" />
+              Add a New Service
             </p>
           </li>
         </Link>
