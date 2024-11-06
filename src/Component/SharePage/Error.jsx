@@ -2,6 +2,7 @@ import Lottie from "lottie-react";
 import { Link } from "react-router-dom";
 import ErrorAnimation from "../../assets/2404.json";
 
+
 const Error = () => {
   return (
     <div>

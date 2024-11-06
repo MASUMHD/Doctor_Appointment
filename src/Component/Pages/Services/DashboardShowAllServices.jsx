@@ -9,6 +9,7 @@ import {
 import { Link } from "react-router-dom";
 import { HiArrowSmallRight } from "react-icons/hi2";
 import { Helmet } from "react-helmet";
+import Swal from "sweetalert2";
 
 const DashboardShowAllServices = () => {
   const [services, setServices] = useState([]);
@@ -26,7 +27,7 @@ const DashboardShowAllServices = () => {
     };
 
     fetchData();
-  }, []);
+  }, [axiosPublic]);
 
   const columns = [
     {
@@ -61,7 +62,6 @@ const DashboardShowAllServices = () => {
       header: "Actions",
       cell: ({ row }) => (
         <div className="flex justify-evenly text-lg">
-          {/* Role Change */}
           <button
             onClick={() => handleEdit(row.original)}
             className="text-blue-500 hover:text-blue-700 border border-blue-500 px-2 py-1 rounded"
@@ -69,7 +69,7 @@ const DashboardShowAllServices = () => {
             <FaUserEdit />
           </button>
           <button
-            onClick={() => handleDelete(row.original)}
+            onClick={() => handleDelete(row.original._id)}
             className="text-red-500 hover:text-red-700 border border-red-500 px-2 py-1 rounded"
           >
             <FaTrash />
@@ -83,8 +83,38 @@ const DashboardShowAllServices = () => {
     console.log("Edit clicked for service:");
   };
 
-  const handleDelete = () => {
-    console.log("Delete clicked for service:");
+  // Delete service
+  const handleDelete = (serviceId) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const response = await axiosPublic.delete(`/services/${serviceId}`);
+
+          if (response.status === 200) {
+            // Update the services state to remove the deleted service
+            setServices((prevServices) =>
+              prevServices.filter((service) => service._id !== serviceId)
+            );
+            Swal.fire("Deleted!", "The service has been deleted.", "success");
+          }
+        } catch (error) {
+          console.error("Error deleting service:", error);
+          Swal.fire(
+            "Error!",
+            "Failed to delete the service. Please try again.",
+            "error"
+          );
+        }
+      }
+    });
   };
 
   const table = useReactTable({
