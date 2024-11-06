@@ -50,17 +50,17 @@ const SideBar = ({ SideBarToggle }) => {
             </p>
           </li>
         </Link>
-        <Link to="/dashboard/services">
+        <Link to="/dashboard/dasAllServices">
           <li
             className={`mb-2 py-2 px-3 rounded ${
-              location.pathname === "/dashboard/services"
+              location.pathname === "/dashboard/dasAllServices"
                 ? "text-[#F7A582] font-bold border border-[#F7A582] rounded-lg"
                 : "hover:bg-blue-500"
             }`}
           >
             <p className="flex items-center">
               <FaUsers className="w-6 h-6 mr-2" />
-              Add a New Service
+              All Services
             </p>
           </li>
         </Link>

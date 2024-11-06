@@ -3,6 +3,7 @@ import { useState } from "react";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import axios from "axios";
+import Swal from "sweetalert2"; // Import SweetAlert2
 
 const image_hosting_Key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_Key}`;
@@ -15,6 +16,7 @@ const AddServices = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -38,16 +40,24 @@ const AddServices = () => {
         const response = await axios.post(image_hosting_api, formData);
         console.log("Image Upload Response:", response.data);
 
-        // You can add the image URL to the form data
         const imageUrl = response.data.data.url;
         const finalData = { ...data, imageUrl };
 
-        // Now you can send finalData to your backend
-        console.log("Final Data to Send to Backend:", finalData);
-        // await axiosPublic.post('/your-endpoint', finalData);
+        // Now send finalData to your backend
+        const result = await axiosPublic.post("/services", finalData);
 
+        if (result.status === 200) {
+          // Show success alert
+          Swal.fire("Success", "Service added successfully!", "success");
+
+          // Clear form fields
+          reset();
+          setImagePreview(null);
+          setImage(null);
+        }
       } catch (error) {
         console.error("Error uploading image:", error);
+        Swal.fire("Error", "Failed to add service. Please try again.", "error");
       }
     } else {
       console.log("No image file selected.");
@@ -78,7 +88,7 @@ const AddServices = () => {
                 <img
                   src={imagePreview}
                   alt="Preview"
-                  className="w-full h-40 object-cover rounded-md"
+                  className="w-full h-48 object-cover rounded-md"
                 />
               ) : (
                 <>
@@ -102,30 +112,33 @@ const AddServices = () => {
                 Start Time:
               </label>
               <input
-                type="time"
-                id="startTime"
-                name="startTime"
+                type="date"
+                id="date"
+                name="date"
                 className="border p-2 w-full rounded-lg"
-                {...register("startTime", { required: true })}
+                required
+                {...register("date")}
               />
-              {errors.startTime && (
+              {errors.date && (
                 <p className="text-red-500">Start Time is required.</p>
               )}
             </div>
             <div className="text-start space-y-2">
-              <label className="text-base font-semibold ml-1" htmlFor="endTime">
-                End Time:
+              <label
+                className="text-base font-semibold ml-1"
+                htmlFor="description"
+              >
+                Short Description:
               </label>
-              <input
-                type="time"
-                id="endTime"
-                name="endTime"
-                className="border p-2 w-full rounded-lg"
-                {...register("endTime", { required: true })}
-              />
-              {errors.endTime && (
-                <p className="text-red-500">End Time is required.</p>
-              )}
+              <textarea
+                id="description"
+                name="description"
+                rows="2"
+                required
+                className="border p-3 w-full rounded-lg focus:outline-none focus:border-blue-500"
+                placeholder="Enter a brief description"
+                {...register("description")}
+              ></textarea>
             </div>
           </div>
         </div>
@@ -141,41 +154,46 @@ const AddServices = () => {
             name="title"
             className="border p-2 w-full rounded-lg"
             placeholder="Enter title"
-            {...register("title", { required: true })}
+            required
+            {...register("title")}
           />
           {errors.title && <p className="text-red-500">Title is required.</p>}
         </div>
 
-        {/* Start Date and End Date Fields */}
+        {/* Start and End Time Fields */}
         <div className="flex flex-col lg:flex-row gap-5 items-center">
           <div className="text-start space-y-2 w-full">
-            <label className="text-base font-semibold ml-1" htmlFor="startDate">
-              Start Date:
+            <label className="text-base font-semibold ml-1" htmlFor="startTime">
+              Start Time:
             </label>
             <input
-              type="date"
-              id="startDate"
-              name="startDate"
+              type="time"
+              id="startTime"
+              name="startTime"
               className="border p-2 w-full rounded-lg"
-              {...register("startDate", { required: true })}
+              defaultValue="10:00" // Set default time to 10:00 AM
+              required
+              {...register("startTime")}
             />
-            {errors.startDate && (
-              <p className="text-red-500">Start Date is required.</p>
+            {errors.startTime && (
+              <p className="text-red-500">Start Time is required.</p>
             )}
           </div>
           <div className="text-start space-y-2 w-full">
-            <label className="text-base font-semibold ml-1" htmlFor="endDate">
-              End Date:
+            <label className="text-base font-semibold ml-1" htmlFor="endTime">
+              End Time:
             </label>
             <input
-              type="date"
-              id="endDate"
-              name="endDate"
+              type="time"
+              id="endTime"
+              name="endTime"
               className="border p-2 w-full rounded-lg"
-              {...register("endDate", { required: true })}
+              defaultValue="17:00" // Set default time to 05:00 PM
+              required
+              {...register("endTime")}
             />
-            {errors.endDate && (
-              <p className="text-red-500">End Date is required.</p>
+            {errors.endTime && (
+              <p className="text-red-500">End Time is required.</p>
             )}
           </div>
         </div>

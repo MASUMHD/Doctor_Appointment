@@ -13,6 +13,7 @@ import AllAppointment from "./Component/Pages/Appointment/AllAppointment";
 import AllUsers from "./Component/Pages/Dashboard/DasSideRouters/AllUsers";
 import DasHome from "./Component/Pages/Dashboard/DasSideRouters/DasHome";
 import AddServices from "./Component/Pages/Services/AddServices";
+import DashboardShowAllServices from "./Component/Pages/Services/DashboardShowAllServices";
 
 export const router = createBrowserRouter([
   {
@@ -71,6 +72,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/allUsers",
         element: <AllUsers/>,
+      },
+      {
+        path: "/dashboard/dasAllServices",
+        element: <DashboardShowAllServices/>
       },
       {
         path: "/dashboard/services",
