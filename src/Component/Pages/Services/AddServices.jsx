@@ -93,7 +93,7 @@ const AddServices = () => {
         </Link>
       </div>
       <div className="w-full lg:w-2/3 mx-auto p-3">
-        <h1 className="text-3xl font-bold mb-8">Add Services</h1>
+        <h1 className="text-3xl font-bold mb-8 ">Add Services</h1>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 mt-16">
           {/* Image Upload Section */}
           <div className="flex flex-col lg:flex-row space-y-4 gap-5">

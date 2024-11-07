@@ -42,7 +42,7 @@ const DashboardShowAllServices = () => {
         <img
           src={
             row.original.imageUrl ||
-            "https://cdn-icons-png.flaticon.com/512/2919/2919906.png"
+            "https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-15.png"
           }
           alt="Profile"
           className="w-10 h-10 rounded-full"
@@ -261,8 +261,8 @@ const DashboardShowAllServices = () => {
       <div className="flex justify-center items-center ">
         <div className="w-full max-w-6xl p-4 bg-white shadow-md rounded-lg">
           <div className="flex justify-between items-center mb-5">
-            <h1 className="text-2xl lg:text-4xl font-bold text-gray-700 text-center ">
-              All Services
+            <h1 className="text-2xl lg:text-4xl font-bold text-gray-800 text-center ">
+              All Services <span className="text-[#F7A582] ml-1 text-3xl  border-2 border-[#F7A582] hidden lg:inline rounded px-2">{services.length}</span>
             </h1>
             <Link to="/dashboard/services">
               <button className="bg-[#F7A582] hover:bg-[#07332F] text-white font-bold py-2 px-4 rounded flex items-center">

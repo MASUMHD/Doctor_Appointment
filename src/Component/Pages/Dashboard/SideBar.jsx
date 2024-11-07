@@ -9,7 +9,7 @@ const SideBar = ({ SideBarToggle }) => {
     <div
       className={`${
         SideBarToggle ? "hidden" : "block"
-      } w-64 bg-gray-800 fixed h-full px-4 py-2`}
+      } w-64 bg-[#07332F] fixed h-full px-4 py-2`}
     >
       <div className="my-2 mb-4">
         <Link to="/" className="btn btn-ghost text-xl">

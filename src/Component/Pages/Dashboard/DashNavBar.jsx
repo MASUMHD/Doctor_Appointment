@@ -9,7 +9,7 @@ const DashNavBar = ({ SideBarToggle, setSideBarToggle }) => {
   const { user } = UseAuth();
 
   return (
-    <div className="bg-gray-800 px-4 py-3 flex justify-between items-center transition-all duration-300 ">
+    <div className="bg-[#07332F] px-4 py-3 flex justify-between items-center transition-all duration-300 ">
       <div className="flex items-center text-xl">
         <FaBars
           onClick={() => setSideBarToggle(!SideBarToggle)}

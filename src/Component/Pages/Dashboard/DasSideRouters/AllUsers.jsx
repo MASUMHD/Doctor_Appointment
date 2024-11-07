@@ -166,8 +166,8 @@ const AllUsers = () => {
       </Helmet>
       <div className="flex justify-center items-center ">
         <div className="w-full max-w-6xl p-4 bg-white shadow-md rounded-lg">
-          <h1 className="text-2xl font-bold text-gray-700 text-center mb-4">
-            All Users
+          <h1 className="text-2xl lg:text-4xl font-bold text-gray-700 text-start mb-4">
+            All Users <span className="text-[#F7A582] ml-1 text-3xl  border-2 border-[#F7A582] hidden lg:inline rounded px-2">{users.length}</span>
           </h1>
           <table className="min-w-full border border-gray-300">
             <thead>
