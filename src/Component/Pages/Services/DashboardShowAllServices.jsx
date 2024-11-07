@@ -79,9 +79,139 @@ const DashboardShowAllServices = () => {
     },
   ];
 
-  const handleEdit = () => {
-    console.log("Edit clicked for service:");
+  // update service
+  const handleEdit = (service) => {
+    Swal.fire({
+      title: '<h2 style="color: #07332F;">Update Service</h2>',
+      html: `
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+          <!-- Service Image -->
+          <img 
+            src="${service.imageUrl}" 
+            alt="Service Image" 
+            style="width: 100px; height: 100px; object-fit: cover; border-radius: 10px;" 
+          />
+    
+          <div style="display: flex; flex-direction: column; gap: 5px; width: 100%;">
+            <div style="display: flex; flex-direction: column;">
+              <label for="title" style="font-weight: bold; align-self: flex-start; margin-left: 30px; color: #07332F;">Service Name:</label>
+              <input 
+                id="title" 
+                name="title" 
+                class="swal2-input" 
+                style="width: 88%; padding: 10px; font-size: 14px;" 
+                placeholder="Service Name" 
+                value="${service.title}" 
+              />
+            </div>
+            
+            <div style="display: flex; flex-direction: column;">
+              <label for="date" style="font-weight: bold; align-self: flex-start; margin-left: 30px; color: #07332F;">Start Date:</label>
+              <input 
+                id="date" 
+                name="date" 
+                type="date" 
+                class="swal2-input" 
+                style="width: 88%; padding: 10px; font-size: 14px;" 
+                value="${service.date}" 
+              />
+            </div>
+    
+            <div style="display: flex; flex-direction: column; gap: 5px;">
+              <label for="description" style="font-weight: bold; color: #07332F;">Description:</label>
+              <textarea 
+                id="description" 
+                name="description" 
+                class="swal2-input" 
+                style="width: 100%; height: 100px; padding: 10px; font-size: 14px; resize: vertical;" 
+                placeholder="Description"
+              >${service.description}</textarea>
+            </div>
+    
+            <div style="display: flex; width: 94%; margin-top: 10px;">
+              <div style="display: flex; flex-direction: column; flex: 1;">
+                <label for="startTime" style="font-weight: bold; align-self: flex-start; margin-left: 30px; color: #07332F;">Start Time:</label>
+                <input 
+                  id="startTime" 
+                  name="startTime" 
+                  class="swal2-input" 
+                  style="width: 88%; padding: 10px; font-size: 14px;" 
+                  placeholder="Start Time" 
+                  value="${service.startTime}" 
+                />
+              </div>
+    
+              <div style="display: flex; flex-direction: column; flex: 1;">
+                <label for="endTime" style="font-weight: bold; align-self: flex-start; margin-left: 30px; color: #07332F;">End Time:</label>
+                <input 
+                  id="endTime" 
+                  name="endTime" 
+                  class="swal2-input" 
+                  style="width: 88%; padding: 10px; font-size: 14px;" 
+                  placeholder="End Time" 
+                  value="${service.endTime}" 
+                />
+              </div>
+            </div>
+    
+            <div style="display: flex; flex-direction: column; margin-top: 10px;">
+              <label for="doctor_fees" style="font-weight: bold; color: #07332F;">Doctor Fees:</label>
+              <input 
+                id="doctor_fees" 
+                name="doctor_fees" 
+                class="swal2-input" 
+                style="width: 88%; padding: 10px; font-size: 14px;" 
+                placeholder="Doctor Fees" 
+                value="${service.doctor_fees}" 
+              />
+            </div>
+          </div>
+        </div>
+      `,
+      showCancelButton: true,
+      confirmButtonText: '<span style="color: white; padding: 5px 15px; border-radius: 5px;">Save Changes</span>',
+      cancelButtonText: '<span style="color: #07332F;">Cancel</span>',
+      background: '#F7F7F7',
+      customClass: {
+        popup: 'rounded-lg shadow-md border border-gray-200',
+      },
+      preConfirm: () => {
+        return {
+          title: document.getElementById('title').value,
+          date: document.getElementById('date').value,
+          description: document.getElementById('description').value,
+          startTime: document.getElementById('startTime').value,
+          endTime: document.getElementById('endTime').value,
+          doctor_fees: document.getElementById('doctor_fees').value,
+          imageUrl: service.imageUrl,
+        };
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        updateService(service._id, result.value);
+      }
+    });
+    
+    
   };
+  
+  const updateService = async (id, updatedData) => {
+    try {
+      const response = await axiosPublic.put(`/services/${id}`, updatedData);
+      if (response.status === 200) {
+        setServices((prevServices) =>
+          prevServices.map((service) =>
+            service._id === id ? { ...service, ...updatedData } : service
+          )
+        );
+        Swal.fire('Updated!', 'Service details have been updated.', 'success');
+      }
+    } catch (error) {
+      console.error("Error updating service:", error);
+      Swal.fire('Error!', 'Failed to update the service. Please try again.', 'error');
+    }
+  };
+  
 
   // Delete service
   const handleDelete = (serviceId) => {

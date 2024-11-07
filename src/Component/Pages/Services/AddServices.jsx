@@ -34,6 +34,8 @@ const AddServices = () => {
   const onSubmit = async (data) => {
     console.log("Form Data:", data);
 
+    
+
     // Upload image to ImgBB if it exists
     if (image) {
       const formData = new FormData();
@@ -44,7 +46,8 @@ const AddServices = () => {
         console.log("Image Upload Response:", response.data);
 
         const imageUrl = response.data.data.url;
-        const finalData = { ...data, imageUrl };
+        const doctor_fees = '1000';
+        const finalData = { ...data, imageUrl, doctor_fees };
 
         // Now send finalData to your backend
         const result = await axiosPublic.post("/services", finalData);
