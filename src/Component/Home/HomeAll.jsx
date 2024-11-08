@@ -13,7 +13,7 @@ const HomeAll = () => {
         <title>Doc | Home</title>
       </Helmet>
       <Banner />
-      <div className="pl-3 lg:pl-32 pr-3 lg:pr-32">
+      <div className="pl-3 lg:pl-32 pr-3 lg:pr-32 ">
         <OurServices />
         <Cards/>
         <Review/>
