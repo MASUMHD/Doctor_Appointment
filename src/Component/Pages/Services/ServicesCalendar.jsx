@@ -7,7 +7,7 @@ const ServicesCalendar = () => {
   const [date, setDate] = useState(new Date());
 
   return (
-    <div className="mt-10 lg:mt-20 mb-10 lg:mb-20">
+    <div className="mt-0 lg:mt-20 mb-10 lg:mb-20">
       <div className="flex flex-col md:flex-row items-center justify-around space-y-16 md:space-y-0 md:space-x-4 lg:space-x-10">
         <style >
           {`
