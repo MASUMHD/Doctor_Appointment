@@ -13,7 +13,7 @@ const Dashboard = ({ SideBarToggle, setSideBarToggle }) => {
         SideBarToggle={SideBarToggle}
         setSideBarToggle={setSideBarToggle}
       />
-      <div className="mt-8 text-center">
+      <div className="mt-8 text-center ">
         <Outlet />
       </div>
     </div>
