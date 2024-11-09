@@ -1,13 +1,13 @@
 import { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import chairImage from "../../../../public/image/chair 1.png"; // Adjust the path accordingly
+import chairImage from "../../../../public/image/chair 1.png"; 
 
 const ServicesCalendar = () => {
   const [date, setDate] = useState(new Date());
 
   return (
-    <div className="mt-0 lg:mt-20 mb-10 lg:mb-20">
+    <div className="mt-0 lg:mt-20 mb-20 lg:mb-28">
       <div className="flex flex-col md:flex-row items-center justify-around space-y-16 md:space-y-0 md:space-x-4 lg:space-x-10">
         <style >
           {`

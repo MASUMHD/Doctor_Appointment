@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet";
 import ServicesBanner from "./ServicesBanner";
 import ServicesCalendar from "./ServicesCalendar";
+import ServicesBooking from "./ServicesBooking";
 
 const AllServices = () => {
   return (
@@ -11,7 +12,7 @@ const AllServices = () => {
       <ServicesBanner />
       <div className="pl-3 lg:pl-32 pr-3 lg:pr-32">
         <ServicesCalendar/>
-        
+        <ServicesBooking/>
       </div>
     </div>
   );

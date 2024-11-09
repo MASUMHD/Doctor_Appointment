@@ -1,7 +1,7 @@
 
 import Lottie from "lottie-react";
 import PropTypes from "prop-types";
-import ErrorAnimation from "../../../../public/dddddd.json";
+import DoctorBanner from "../../../../public/dddddd.json";
 
 const DocBanner = ({ doctor }) => {
   return (
@@ -19,7 +19,7 @@ const DocBanner = ({ doctor }) => {
       {/* Lottie Animation */}
       <div className="w-full md:w-1/2 flex justify-center ">
         <Lottie
-          animationData={ErrorAnimation}
+          animationData={DoctorBanner}
           className="w-full h-40 md:w-full md:h-72" 
         />
       </div>
