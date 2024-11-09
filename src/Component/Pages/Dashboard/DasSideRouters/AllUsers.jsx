@@ -4,7 +4,6 @@ import {
   getCoreRowModel,
   flexRender,
 } from "@tanstack/react-table";
-// import axios from 'axios';
 import { FaUserEdit, FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import UseAxiosPublic from "../../../Hooks/useAxiosPublic";
