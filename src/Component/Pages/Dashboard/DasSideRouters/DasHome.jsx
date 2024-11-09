@@ -1,7 +1,5 @@
-import React from 'react';
 import { Line, Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement, ArcElement } from 'chart.js';
-import { FiUser, FiUsers } from 'react-icons/fi';
 import { AiOutlinePieChart } from 'react-icons/ai';
 import { FaUserDoctor } from 'react-icons/fa6';
 import { HiOutlineUsers } from 'react-icons/hi2';
@@ -41,45 +39,48 @@ const DasHome = () => {
       {/* Top Row with Statistic Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8 mt-6">
         {/* Doctor Card */}
-        <div className="bg-white rounded-lg shadow p-4 flex flex-col items-center h-44">
-          <div className="flex items-center gap-2">
-            <div className="bg-pink-100 p-2 rounded-full">
-              <FaUserDoctor className="text-pink-500 text-2xl" />
+        <div className="bg-white rounded-lg shadow p-4 flex flex-col  h-44">
+          <div className="flex items-center gap-7">
+            <div className="bg-pink-100 p-2 rounded-lg h-20 w-20 items-center text-center justify-center">
+              <FaUserDoctor className="text-pink-500 text-4xl mx-auto mt-3" />
             </div>
-            <h2 className="text-3xl font-bold">168</h2>
+            <h2 className="text-5xl font-bold text-[#6C6B6B]">168</h2>
           </div>
-          <p className="text-gray-500 mt-2">Doctor</p>
-          <div className="w-full mt-3 h-2 bg-pink-200 rounded-full overflow-hidden">
+          
+          <div className="w-full mt-5 h-2 bg-pink-200 rounded-full overflow-hidden ">
             <div className="h-full bg-pink-500" style={{ width: '80%' }}></div>
           </div>
+          <p className="text-gray-500 mt-2 text-start">Doctor</p>
         </div>
 
         {/* Patient Card */}
-        <div className="bg-white rounded-lg shadow p-4 flex flex-col items-center">
-          <div className="flex items-center gap-2">
-            <div className="bg-green-100 p-2 rounded-full">
-              <HiOutlineUsers className="text-green-500 text-2xl" />
+        <div className="bg-white rounded-lg shadow p-4 flex flex-col  h-44">
+          <div className="flex items-center gap-7">
+            <div className="bg-green-100 p-2 rounded-lg h-20 w-20 items-center text-center justify-center">
+              <HiOutlineUsers className="text-green-500 text-4xl mx-auto mt-3" />
             </div>
-            <h2 className="text-3xl font-bold">487</h2>
+            <h2 className="text-5xl font-bold text-[#6C6B6B]">487</h2>
           </div>
-          <p className="text-gray-500 mt-2">Patients</p>
-          <div className="w-full mt-3 h-2 bg-green-200 rounded-full overflow-hidden">
+          
+          <div className="w-full mt-5 h-2 bg-green-200 rounded-full overflow-hidden">
             <div className="h-full bg-green-500" style={{ width: '90%' }}></div>
           </div>
+          <p className="text-gray-500 mt-2 text-start">Patients</p>
         </div>
 
         {/* Appointment Card */}
-        <div className="bg-white rounded-lg shadow p-4 flex flex-col items-center">
-          <div className="flex items-center gap-2">
-            <div className="bg-yellow-100 p-2 rounded-full">
-              <AiOutlinePieChart className="text-yellow-500 text-2xl" />
+        <div className="bg-white rounded-lg shadow p-4 flex flex-col  h-44">
+          <div className="flex items-center gap-7">
+            <div className="bg-yellow-100 p-2 rounded-lg h-20 w-20 items-center text-center justify-center">
+              <AiOutlinePieChart className="text-yellow-500 text-4xl mx-auto mt-3" />
             </div>
-            <h2 className="text-3xl font-bold">95</h2>
+            <h2 className="text-5xl font-bold text-[#6C6B6B]">95</h2>
           </div>
-          <p className="text-gray-500 mt-2">Appointment</p>
-          <div className="w-full mt-3 h-2 bg-yellow-200 rounded-full overflow-hidden">
+          
+          <div className="w-full mt-5 h-2 bg-yellow-200 rounded-full overflow-hidden">
             <div className="h-full bg-yellow-500" style={{ width: '50%' }}></div>
           </div>
+          <p className="text-gray-500 mt-2 text-start">Appointment</p>
         </div>
       </div>
 
