@@ -2,20 +2,34 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useForm } from "react-hook-form";
+import UseAuth from "../../Hooks/UseAuth";
 
 const ServicesBookConfirm = () => {
   const { id } = useParams();
-//   const navigate = useNavigate();
   const axiosPublic = useAxiosPublic();
   const [service, setService] = useState(null);
+  const [serviceInfo, setServiceInfo] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState("");
   const { register, handleSubmit } = useForm();
+  const { user } = UseAuth();
 
   useEffect(() => {
     const fetchService = async () => {
       try {
         const response = await axiosPublic.get(`/services/${id}`);
         setService(response.data);
+
+        // Storing service information
+        const serviceData = {
+          title: response.data.title,
+          imageUrl: response.data.imageUrl,
+          startTime: response.data.startTime,
+          endTime: response.data.endTime,
+          doctorFees: response.data.doctor_fees,
+        };
+        
+        // You can store this data in serviceInfo
+        setServiceInfo(serviceData);
       } catch (error) {
         console.error("Error fetching service details:", error);
       }
@@ -23,14 +37,23 @@ const ServicesBookConfirm = () => {
     fetchService();
   }, [id, axiosPublic]);
 
-  const onSubmit = (data) => {
-    // Include the payment method in the form data for logging
-    const formData = { ...data, paymentMethod };
 
+  const onSubmit = (data) => {
+    // userinfo
+    const userInfo = {
+        name: user.displayName,
+        email: user.email,
+        userImageUrl: user.photoURL
+    };
+    const status = 'pending';
+    const formData = { ...data, paymentMethod, serviceInfo, userInfo, status  };
+
+    // Log the form data
     if (paymentMethod === "online") {
       console.log("Form Data:", formData);
-    //   navigate("/payment");
-    } else if (paymentMethod === "cash") {
+      alert('uff online payment is not available');
+    } 
+    else if (paymentMethod === "cash") {
       console.log("Form Data:", formData);
     }
   };
@@ -61,7 +84,7 @@ const ServicesBookConfirm = () => {
               </p>
             )}
             {service.doctor_fees && (
-              <p className="text-gray-700 mt- mb-4">
+              <p className="text-gray-700  mb-4">
                 <span className="font-semibold text-lg">Doctor Fees :</span>
                 <span className="text-gray-500 text-xl">${service.doctor_fees}</span>
               </p>
@@ -147,9 +170,9 @@ const ServicesBookConfirm = () => {
                   value="online"
                   checked={paymentMethod === "online"}
                   onChange={() => setPaymentMethod("online")}
-                  className="mr-2"
+                  className="mr-2 hidden"
                 />
-                <label htmlFor="online" className="text-gray-700">
+                <label htmlFor="online" className="text-gray-700 hidden">
                   Online Payment
                 </label>
               </div>
