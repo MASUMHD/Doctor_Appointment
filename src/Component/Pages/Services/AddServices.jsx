@@ -92,9 +92,9 @@ const AddServices = () => {
           <p className="text-base font-semibold">Add New Services</p>
         </Link>
       </div>
-      <div className="w-full lg:w-2/3 mx-auto p-3">
+      <div className="w-full lg:w-2/3 mx-auto p-3 -mt-0 lg:-mt-11">
         <h1 className="text-3xl font-bold mb-8 ">Add Services</h1>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 mt-16">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 ">
           {/* Image Upload Section */}
           <div className="flex flex-col lg:flex-row space-y-4 gap-5">
             <div className="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-lg p-2 w-full cursor-pointer flex-1">
@@ -186,7 +186,22 @@ const AddServices = () => {
             />
             {errors.title && <p className="text-red-500">Title is required.</p>}
           </div>
-
+          {/* Doctor Name Field */}
+          <div className="text-start space-y-2">
+            <label className="text-base font-semibold ml-1" htmlFor="title">
+              Doctor Name :
+            </label>
+            <input
+              type="text"
+              id="title"
+              name="doctorName"
+              className="border p-2 w-full rounded-lg"
+              placeholder="Doctor Name"
+              required
+              {...register("doctorName")}
+            />
+            {errors.doctorName && <p className="text-red-500">Title is required.</p>}
+          </div>
           {/* Start and End Time Fields */}
           <div className="flex flex-col lg:flex-row gap-5 items-center">
             <div className="text-start space-y-2 w-full">

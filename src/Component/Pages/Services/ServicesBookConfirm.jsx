@@ -1,12 +1,14 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useForm } from "react-hook-form";
 import UseAuth from "../../Hooks/UseAuth";
+import Swal from "sweetalert2";
 
 const ServicesBookConfirm = () => {
   const { id } = useParams();
   const axiosPublic = useAxiosPublic();
+  const navigate = useNavigate();
   const [service, setService] = useState(null);
   const [serviceInfo, setServiceInfo] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState("");
@@ -26,6 +28,7 @@ const ServicesBookConfirm = () => {
           startTime: response.data.startTime,
           endTime: response.data.endTime,
           doctorFees: response.data.doctor_fees,
+          doctorName: response.data.doctorName
         };
         
         // You can store this data in serviceInfo
@@ -37,24 +40,40 @@ const ServicesBookConfirm = () => {
     fetchService();
   }, [id, axiosPublic]);
 
-
-  const onSubmit = (data) => {
-    // userinfo
+  const onSubmit = async (data) => {
+    // User info
     const userInfo = {
-        name: user.displayName,
-        email: user.email,
-        userImageUrl: user.photoURL
+      name: user.displayName,
+      email: user.email,
+      userImageUrl: user.photoURL
     };
     const status = 'pending';
-    const formData = { ...data, paymentMethod, serviceInfo, userInfo, status  };
+    const formData = { ...data, paymentMethod, serviceInfo, userInfo, status };
 
-    // Log the form data
     if (paymentMethod === "online") {
       console.log("Form Data:", formData);
       alert('uff online payment is not available');
     } 
     else if (paymentMethod === "cash") {
-      console.log("Form Data:", formData);
+      try {
+        const response = await axiosPublic.post('/bookings', formData);
+        if (response.status === 200) {
+          Swal.fire({
+            icon: "success",
+            title: "Booking Confirmed!",
+            text: "Your booking has been successfully confirmed.",
+            confirmButtonText: "OK",
+          });
+        }
+        navigate("/appointment");
+      } catch (error) {
+        console.error("Error confirming booking:", error);
+        Swal.fire({
+          icon: "error",
+          title: "Booking Failed",
+          text: "There was an issue confirming your booking. Please try again.",
+        });
+      }
     }
   };
 
@@ -84,7 +103,7 @@ const ServicesBookConfirm = () => {
               </p>
             )}
             {service.doctor_fees && (
-              <p className="text-gray-700  mb-4">
+              <p className="text-gray-700 mb-4">
                 <span className="font-semibold text-lg">Doctor Fees :</span>
                 <span className="text-gray-500 text-xl">${service.doctor_fees}</span>
               </p>

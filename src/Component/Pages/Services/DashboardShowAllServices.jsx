@@ -80,6 +80,7 @@ const DashboardShowAllServices = () => {
   ];
 
   // update service
+
   const handleEdit = (service) => {
     Swal.fire({
       title: '<h2 style="color: #07332F;">Update Service</h2>',
@@ -102,6 +103,17 @@ const DashboardShowAllServices = () => {
                 style="width: 88%; padding: 10px; font-size: 14px;" 
                 placeholder="Service Name" 
                 value="${service.title}" 
+              />
+            </div>
+            <div style="display: flex; flex-direction: column;">
+              <label for="title" style="font-weight: bold; align-self: flex-start; margin-left: 30px; color: #07332F;">Doctor Name:</label>
+              <input 
+                id="doctorName" 
+                name="doctorName" 
+                class="swal2-input" 
+                style="width: 88%; padding: 10px; font-size: 14px;" 
+                placeholder="Doctor Name" 
+                value="${service.doctorName}" 
               />
             </div>
             
@@ -169,20 +181,22 @@ const DashboardShowAllServices = () => {
         </div>
       `,
       showCancelButton: true,
-      confirmButtonText: '<span style="color: white; padding: 5px 15px; border-radius: 5px;">Save Changes</span>',
+      confirmButtonText:
+        '<span style="color: white; padding: 5px 15px; border-radius: 5px;">Save Changes</span>',
       cancelButtonText: '<span style="color: #07332F;">Cancel</span>',
-      background: '#F7F7F7',
+      background: "#F7F7F7",
       customClass: {
-        popup: 'rounded-lg shadow-md border border-gray-200',
+        popup: "rounded-lg shadow-md border border-gray-200",
       },
       preConfirm: () => {
         return {
-          title: document.getElementById('title').value,
-          date: document.getElementById('date').value,
-          description: document.getElementById('description').value,
-          startTime: document.getElementById('startTime').value,
-          endTime: document.getElementById('endTime').value,
-          doctor_fees: document.getElementById('doctor_fees').value,
+          title: document.getElementById("title").value,
+          doctorName: document.getElementById("doctorName").value,
+          date: document.getElementById("date").value,
+          description: document.getElementById("description").value,
+          startTime: document.getElementById("startTime").value,
+          endTime: document.getElementById("endTime").value,
+          doctor_fees: document.getElementById("doctor_fees").value,
           imageUrl: service.imageUrl,
         };
       },
@@ -191,27 +205,29 @@ const DashboardShowAllServices = () => {
         updateService(service._id, result.value);
       }
     });
-    
-    
   };
-  
+
   const updateService = async (id, updatedData) => {
     try {
       const response = await axiosPublic.put(`/services/${id}`, updatedData);
       if (response.status === 200) {
+        // Update the state with the new service data without requiring a page reload
         setServices((prevServices) =>
           prevServices.map((service) =>
             service._id === id ? { ...service, ...updatedData } : service
           )
         );
-        Swal.fire('Updated!', 'Service details have been updated.', 'success');
+        Swal.fire("Updated!", "Service details have been updated.", "success");
       }
     } catch (error) {
       console.error("Error updating service:", error);
-      Swal.fire('Error!', 'Failed to update the service. Please try again.', 'error');
+      Swal.fire(
+        "Error!",
+        "Failed to update the service. Please try again.",
+        "error"
+      );
     }
   };
-  
 
   // Delete service
   const handleDelete = (serviceId) => {
@@ -262,7 +278,10 @@ const DashboardShowAllServices = () => {
         <div className="w-full max-w-6xl p-4 bg-white shadow-md rounded-lg">
           <div className="flex justify-between items-center mb-5">
             <h1 className="text-2xl lg:text-4xl font-bold text-gray-800 text-center ">
-              All Services <span className="text-[#F7A582] ml-1 text-3xl  border-2 border-[#F7A582] hidden lg:inline rounded px-2">{services.length}</span>
+              All Services{" "}
+              <span className="text-[#F7A582] ml-1 text-3xl  border-2 border-[#F7A582] hidden lg:inline rounded px-2">
+                {services.length}
+              </span>
             </h1>
             <Link to="/dashboard/services">
               <button className="bg-[#F7A582] hover:bg-[#07332F] text-white font-bold py-2 px-4 rounded flex items-center">
