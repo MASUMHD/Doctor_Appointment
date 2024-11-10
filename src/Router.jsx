@@ -14,6 +14,8 @@ import AllUsers from "./Component/Pages/Dashboard/DasSideRouters/AllUsers";
 import DasHome from "./Component/Pages/Dashboard/DasSideRouters/DasHome";
 import AddServices from "./Component/Pages/Services/AddServices";
 import DashboardShowAllServices from "./Component/Pages/Services/DashboardShowAllServices";
+import ServicesBookConfirm from "./Component/Pages/Services/ServicesBookConfirm";
+import AllPayment from "./Component/Pages/Services/Payment/AllPayment";
 
 export const router = createBrowserRouter([
   {
@@ -53,7 +55,22 @@ export const router = createBrowserRouter([
         path: "/appointment",
         element: <AllAppointment />,
       },
-      {},
+      {
+        path: "/services-Confirm/:id",
+        element: (
+          <PrivateRoute>
+            <ServicesBookConfirm />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/payment",
+        element: (
+          <PrivateRoute>
+            <AllPayment/>
+          </PrivateRoute>
+        ),
+      }
     ],
   },
   {
@@ -67,20 +84,19 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <DasHome />,
-      }
-      ,
+      },
       {
         path: "/dashboard/allUsers",
-        element: <AllUsers/>,
+        element: <AllUsers />,
       },
       {
         path: "/dashboard/dasAllServices",
-        element: <DashboardShowAllServices/>
+        element: <DashboardShowAllServices />,
       },
       {
         path: "/dashboard/services",
-        element: <AddServices/>
-      }
+        element: <AddServices />,
+      },
     ],
   },
 ]);
