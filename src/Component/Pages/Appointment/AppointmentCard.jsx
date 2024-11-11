@@ -71,6 +71,8 @@ AppointmentCard.propTypes = {
     status: PropTypes.string.isRequired,
     serviceInfo: PropTypes.shape({
       doctorName: PropTypes.string.isRequired,
+      imageUrl: PropTypes.string.isRequired,
+      doctorFees: PropTypes.number.isRequired,
     }).isRequired,
     userInfo: PropTypes.shape({
       name: PropTypes.string.isRequired,
