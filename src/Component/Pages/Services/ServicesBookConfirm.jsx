@@ -28,9 +28,9 @@ const ServicesBookConfirm = () => {
           startTime: response.data.startTime,
           endTime: response.data.endTime,
           doctorFees: response.data.doctor_fees,
-          doctorName: response.data.doctorName
+          doctorName: response.data.doctorName,
         };
-        
+
         // You can store this data in serviceInfo
         setServiceInfo(serviceData);
       } catch (error) {
@@ -45,18 +45,17 @@ const ServicesBookConfirm = () => {
     const userInfo = {
       name: user.displayName,
       email: user.email,
-      userImageUrl: user.photoURL
+      userImageUrl: user.photoURL,
     };
-    const status = 'pending';
+    const status = "pending";
     const formData = { ...data, paymentMethod, serviceInfo, userInfo, status };
 
     if (paymentMethod === "online") {
       console.log("Form Data:", formData);
-      alert('uff online payment is not available');
-    } 
-    else if (paymentMethod === "cash") {
+      alert("uff online payment is not available");
+    } else if (paymentMethod === "cash") {
       try {
-        const response = await axiosPublic.post('/bookings', formData);
+        const response = await axiosPublic.post("/bookings", formData);
         if (response.status === 200) {
           Swal.fire({
             icon: "success",
@@ -87,7 +86,9 @@ const ServicesBookConfirm = () => {
         {/* Service Information Section */}
         <div className="lg:w-1/2 border-gray-300 border-r-0 lg:border-r-2 border-dashed">
           <div className="pr-0 lg:pr-10">
-            <h1 className="text-3xl font-semibold mb-5 text-center">{service.title}</h1>
+            <h1 className="text-3xl font-semibold mb-5 text-center">
+              {service.title}
+            </h1>
             <img
               src={service.imageUrl}
               alt={service.title}
@@ -96,16 +97,26 @@ const ServicesBookConfirm = () => {
             <p className="text-gray-500 mt-10 text-center">
               Available Time: {service.startTime} - {service.endTime}
             </p>
+            {service.doctorName && (
+              <p className="text-gray-700 mt-3">
+                <span className="font-semibold text-lg">Doctor Name :</span>
+                <span className="text-gray-500 text-xl ml-1">
+                   {service.doctorName}
+                </span>
+              </p>
+            )}
             {service.description && (
-              <p className="text-gray-700 my-4 mt-6 ">
+              <p className="text-gray-700 my-2 ">
                 <span className="font-semibold text-lg">Description :</span>
-                <span className="text-gray-500">{service.description}</span>
+                <span className="text-gray-500 ml-1">{service.description}</span>
               </p>
             )}
             {service.doctor_fees && (
               <p className="text-gray-700 mb-4">
                 <span className="font-semibold text-lg">Doctor Fees :</span>
-                <span className="text-gray-500 text-xl">${service.doctor_fees}</span>
+                <span className="text-gray-500 text-xl ml-1">
+                  ${service.doctor_fees}
+                </span>
               </p>
             )}
           </div>
@@ -141,7 +152,10 @@ const ServicesBookConfirm = () => {
             </div>
 
             <div>
-              <label htmlFor="description" className="block text-gray-700 font-medium">
+              <label
+                htmlFor="description"
+                className="block text-gray-700 font-medium"
+              >
                 Description :
               </label>
               <textarea
@@ -154,7 +168,10 @@ const ServicesBookConfirm = () => {
             </div>
 
             <div>
-              <label htmlFor="doctorFees" className="block text-gray-700 font-medium">
+              <label
+                htmlFor="doctorFees"
+                className="block text-gray-700 font-medium"
+              >
                 Doctor Fees :
               </label>
               <input

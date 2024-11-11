@@ -21,14 +21,14 @@ const AllAppointment = () => {
   }, [axiosPublic]);
 
   return (
-    <div>
+    <div className='pl-3 lg:pl-32 pr-3 lg:pr-32'>
       <Helmet>
         <title>Doc | Appointment</title>
       </Helmet>
       <div className="">
         <h1 className="text-3xl font-bold uppercase">All Appointment</h1>
       </div>
-      <div className="flex flex-wrap justify-center gap-6">
+      <div className="flex flex-wrap justify-center gap-6 mt-8 mb-12 p-4">
         {appointments.map((appointment) => (
           <AppointmentCard key={appointment._id} appointment={appointment} />
         ))}
