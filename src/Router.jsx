@@ -16,6 +16,7 @@ import AddServices from "./Component/Pages/Services/AddServices";
 import DashboardShowAllServices from "./Component/Pages/Services/DashboardShowAllServices";
 import ServicesBookConfirm from "./Component/Pages/Services/ServicesBookConfirm";
 import AllPayment from "./Component/Pages/Services/Payment/AllPayment";
+import DashboardShowAllAppointments from "./Component/Pages/Services/DashboardShowAllappointments";
 
 export const router = createBrowserRouter([
   {
@@ -97,6 +98,10 @@ export const router = createBrowserRouter([
         path: "/dashboard/services",
         element: <AddServices />,
       },
+      {
+        path: "/dashboard/appointments",
+        element: <DashboardShowAllAppointments/>
+      }
     ],
   },
 ]);

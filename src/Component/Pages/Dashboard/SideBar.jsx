@@ -1,6 +1,8 @@
 import { FaHome, FaUsers } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
+import { MdMedicalServices } from "react-icons/md";
+import { BsChatSquareQuoteFill } from "react-icons/bs";
 
 const SideBar = ({ SideBarToggle }) => {
   const location = useLocation();
@@ -59,8 +61,22 @@ const SideBar = ({ SideBarToggle }) => {
             }`}
           >
             <p className="flex items-center">
-              <FaUsers className="w-6 h-6 mr-2" />
+              <MdMedicalServices className="w-6 h-6 mr-2" />
               All Services
+            </p>
+          </li>
+        </Link>
+        <Link to="/dashboard/appointments">
+          <li
+            className={`mb-2 py-2 px-3 rounded ${
+              location.pathname === "/dashboard/appointments"
+                ? "text-[#F7A582] font-bold border border-[#F7A582] rounded-lg"
+                : "hover:bg-blue-500"
+            }`}
+          >
+            <p className="flex items-center">
+              <BsChatSquareQuoteFill className="w-6 h-6 mr-2" />
+              All Appointments
             </p>
           </li>
         </Link>
