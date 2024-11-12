@@ -15,7 +15,7 @@ const AllAppointment = () => {
       try {
         if (user?.email) {
           const response = await axiosPublic.get(`/bookings/${user.email}`);
-          setAppointments(response.data);  
+          setAppointments(response.data);
         } else {
           console.log("No user logged in.");
         }
@@ -25,7 +25,13 @@ const AllAppointment = () => {
     };
 
     fetchAppointments();
-  }, [axiosPublic, user?.email]);  
+  }, [axiosPublic, user?.email]);
+
+  const handleDeleteAppointment = (deletedAppointmentId) => {
+    setAppointments((prevAppointments) =>
+      prevAppointments.filter((appointment) => appointment._id !== deletedAppointmentId)
+    );
+  };
 
   return (
     <div>
@@ -41,7 +47,11 @@ const AllAppointment = () => {
             <p>No appointments found for this user.</p>
           ) : (
             appointments.map((appointment) => (
-              <AppointmentCard key={appointment._id} appointment={appointment} />
+              <AppointmentCard
+                key={appointment._id}
+                appointment={appointment}
+                onDelete={handleDeleteAppointment} 
+              />
             ))
           )}
         </div>
