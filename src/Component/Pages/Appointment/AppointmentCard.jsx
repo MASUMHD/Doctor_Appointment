@@ -12,15 +12,24 @@ const AppointmentCard = ({ appointment }) => {
     status === "Confirmed"
       ? "bg-green-500"
       : status === "Pending"
-      ? "bg-yellow-500"
+      ? "bg-cyan-500"
       : status === "Cancelled"
       ? "bg-red-500"
       : "bg-gray-500";
 
+  const topHadar =
+    status === "Confirmed"
+      ? "bg-green-300"
+      : status === "Pending"
+      ? "bg-cyan-300"
+      : status === "Cancelled"
+      ? "bg-red-300"
+      : "bg-gray-300";
+
   return (
     <div className="w-full md:w-1/2  rounded-lg overflow-hidden shadow bg-white p-4 relative border-l-4 border-b-4 border-[#F7A582] transform hover:scale-105 transition-transform duration-300">
       {/* Header Section with Background */}
-      <div className="bg-[#a4adadcc] text-white text-center py-2 rounded-t-lg">
+      <div className={`${topHadar} text-white text-center py-2 rounded-t-lg`}>
         <h2 className="text-lg font-semibold">{serviceTitle}</h2>
       </div>
       <div className="flex flex-col md:flex-row justify-around items-start md:items-center">
@@ -32,21 +41,21 @@ const AppointmentCard = ({ appointment }) => {
         {/* Content Section */}
         <div className="p-4 space-y-2 border-l-2 border-dashed rounded-lg  mt-5   ">
           <div className="space-y-2">
-          <p className="text-gray-700">
-            <strong>Doctor:</strong> {doctorName}
-          </p>
-          <p className="text-gray-700">
-            <strong>Patient:</strong> {patient}
-          </p>
-          <p className="text-gray-700">
-            <strong>Date:</strong> {new Date(date).toLocaleDateString()}
-          </p>
-          <p className="text-gray-700">
-            <strong>Time:</strong> {time}
-          </p>
-          <p className="text-gray-700">
-            <strong>Doctor Fees:</strong> ${doctorFees}
-          </p>
+            <p className="text-gray-700 ">
+              <strong>Doctor:</strong> {doctorName}
+            </p>
+            <p className="text-gray-700">
+              <strong>Patient:</strong> {patient}
+            </p>
+            <p className="text-gray-700">
+              <strong>Date:</strong> {new Date(date).toLocaleDateString()}
+            </p>
+            <p className="text-gray-700">
+              <strong>Time:</strong> {time}
+            </p>
+            <p className="text-gray-700">
+              <strong>Doctor Fees:</strong> ${doctorFees}
+            </p>
           </div>
         </div>
       </div>

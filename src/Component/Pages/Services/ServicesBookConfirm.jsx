@@ -47,7 +47,7 @@ const ServicesBookConfirm = () => {
       email: user.email,
       userImageUrl: user.photoURL,
     };
-    const status = "pending";
+    const status = "Pending";
     const formData = { ...data, paymentMethod, serviceInfo, userInfo, status };
 
     if (paymentMethod === "online") {
