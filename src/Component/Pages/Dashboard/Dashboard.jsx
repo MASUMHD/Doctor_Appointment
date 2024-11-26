@@ -19,7 +19,7 @@ const Dashboard = ({ SideBarToggle, setSideBarToggle }) => {
     </div>
   );
 };
-
+ 
 export default Dashboard;
 
 Dashboard.propTypes = {

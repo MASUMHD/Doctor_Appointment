@@ -17,7 +17,7 @@ const DashNavBar = ({ SideBarToggle, setSideBarToggle }) => {
         />
         {/* <span className="text-white font-semibold">E-commerce</span> */}
       </div>
-
+ 
       <div className="flex items-center gap-x-5 pr-0 lg:pr-10">
         <div className="relative md:w-56">
           <span className="relative md:absolute inset-y-0 left-0 flex items-center pl-2">
